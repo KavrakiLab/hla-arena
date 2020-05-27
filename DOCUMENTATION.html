@@ -1,0 +1,1301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.5" />
+<title>HLA_Arena API documentation</title>
+<meta name="description" content="HLA-Arena: A Customizable environment for the structural modeling and analysis of peptide-HLA complexes for cancer immunotherapy …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>HLA_Arena</code></h1>
+</header>
+<section id="section-intro">
+<p>HLA-Arena: A Customizable environment for the structural modeling and analysis of peptide-HLA complexes for cancer immunotherapy</p>
+<h2 id="modeller-license-key">Modeller license key</h2>
+<p>(NOTICE: A MODELLER KEY IS TEMPORARILY PROVIDED FOR THE PURPOSE OF TESTING BY THE REVIEWER)</p>
+<p>Several of HLA-Arena workflows rely on Modeller to perform the homology modeling of a given HLA receptor. This modeling task is integrated into a specific HLA-Arena function (more details below). However, using Modeller requires you to register and obtain your own license key, if you do not already have one. First, follow instructions on the <a href="https://salilab.org/modeller/registration.html">Modeller registration page</a>. </p>
+<h2 id="using-jupyter-notebook">Using Jupyter Notebook</h2>
+<p>Each file with a '.ipynb' extension in this folder is a Jupyter notebook allowing you to run one of HLA-Arena workflows. Note that Jupyter Notebook is already installed in this docker image of HLA-Arena. If you are new to Jupyter Notebook, you can check this <a href="https://www.youtube.com/watch?v=HW29067qVWk&amp;feature=youtu.be&amp;t=274">tutorial on how to interact with its interface</a>. Numerous other resources are available online.</p>
+<h2 id="available-workflows">Available workflows</h2>
+<p><a href="http://127.0.0.1:8888/notebooks/0_minimal_example.ipynb">0_minimal_example.ipynb</a> (open link in a new tab)</p>
+<p>This is the most basic workflow, which will walk you through the steps of HLA modeling, peptide docking and pHLA visualization. You can run all the cells at once, to sequentially execute Modeller, APE-Gen, and NGL Viewer. You can also edit cells to change, for example, the HLA allele name or the peptide sequence.</p>
+<p><a href="http://127.0.0.1:8888/notebooks/1_geometry_prediction.ipynb">1_geometry_prediction.ipynb</a> (open link in a new tab)</p>
+<p>This is a short version of the first workflow, which allows you to carry out geometry prediction with DINC. By default, this workflow performs the self-docking of the pHLA complex with PDB code 1E27. You can edit the cell containing this PDB code, to try and reproduce the crystal structure of another complex. You can also edit the cells containing commands, to choose other types of input (e.g., you can use your own PDB files, rather than using a PDB code) or switch between a self-docking and a cross-docking experiment. Note that lines starting with character '#' are not executed; simply remove this character to make them executable by Jupyter Notebook.</p>
+<p><a href="http://127.0.0.1:8888/notebooks/1b_geometry_prediction_w-rescoring.ipynb">1b_geometry_prediction_w-rescoring.ipynb</a> (open link in a new tab)</p>
+<p>This is a longer version of the first workflow. It additionally performs the rescoring of all output conformations using different scoring functions. In this workflow, input processing for rescoring is handled by MGLTools, through DINC. This process includes steps to check the protonation state of both the ligand and receptor.</p>
+<p><a href="http://127.0.0.1:8888/notebooks/1c_geometry_prediction_paper-demo.ipynb">1c_geometry_prediction_paper-demo.ipynb</a> (open link in a new tab)</p>
+<p>This is a demo version of the first workflow.
+It allows you to reproduce the results reported in our article on HLA-Arena (Antunes et al., 2020) about the cross-docking of the pHLA complex with PDB code 2GTW.
+Intermediate results have been pre-computed and will be loaded in the notebook for quick visualization.
+You can click the "forward" button in the Jupyter Notebook toolbar to execute the entire workflow and visualize the final results.</p>
+<p><a href="http://127.0.0.1:8888/notebooks/2_binding_prediction.ipynb">2_binding_prediction.ipynb</a> (open link in a new tab)</p>
+<p>This is the regular version of our second workflow, which allows you to perform binding prediction using ensembles of bound conformations generated by APE-Gen.
+As input, you can provide an HLA allele, a list of peptide sequences, and corresponding binding affinities.
+This workflow includes steps for a fast rescoring of the results (which is done by Smina) and correlation with experimental data (when available).</p>
+<p><a href="http://127.0.0.1:8888/notebooks/2b_binding_prediction_w-pdbs.ipynb">2b_binding_prediction_w-pdbs.ipynb</a> (open link in a new tab)</p>
+<p>This is an alterantive version of the previous workflow, to perform binding prediction using ensembles of bound conformations generated by APE-Gen.
+In addition to the input requested before (HLA allele, list of peptide sequences and binding affinities), this workflow also takes as input the PDB codes for each complex (when available).
+This workflow includes steps for RMSD calculation between modeled complexes and the corresponding crystal structure, a fast rescoring of the results (which is done by Smina), and correlation with experimental binding affinity data (when available).</p>
+<p><a href="http://127.0.0.1:8888/notebooks/2c_binding_prediction_paper-demo.ipynb">2c_binding_prediction_paper-demo.ipynb</a> (open link in a new tab)</p>
+<p>This is a demo version of the second workflow.
+It allows you to reproduce the results reported in our article on HLA-Arena (Antunes et al., 2020) about the prediction of the binding to HLA-A*02:01 for a small dataset of peptides.
+Intermediate results have been pre-computed and will be loaded in the notebook for quick visualization.
+You can click the "forward" button in the Jupyter Notebook toolbar to execute the entire workflow and visualize the final results.</p>
+<p><a href="http://127.0.0.1:8888/notebooks/3_virtual_screening.ipynb">3_virtual_screening.ipynb</a> (open link in a new tab)</p>
+<p>This is the regular version of our third workflow, which allows you to perform a virtual screening of potential HLA binders using structures generated by APE-Gen.
+As input, you can provide a list of peptide sequences and HLA allele names.</p>
+<p><a href="http://127.0.0.1:8888/notebooks/3b_virtual_screening_paper-demo.ipynb">3b_virtual_screening_paper-demo.ipynb</a> (open link in a new tab)</p>
+<p>This is a demo version of the third workflow.
+It allows you to reproduce the results reported in our article on HLA-Arena (Antunes et al., 2020) about the structure-based virtual screening of a large set of potential HLA-binding peptides.
+Intermediate results have been pre-computed and will be loaded in the notebook for quick visualization.
+You can click the "forward" button in the Jupyter Notebook toolbar to execute the entire workflow and visualize the final results.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">#
+#  Here we wrap up the various docker calls in functions for each stage
+#   in the arena workflow
+#
+#  python 3
+
+&#34;&#34;&#34;
+HLA-Arena: A Customizable environment for the structural modeling and analysis of peptide-HLA complexes for cancer immunotherapy
+
+
+## Modeller license key
+
+(NOTICE: A MODELLER KEY IS TEMPORARILY PROVIDED FOR THE PURPOSE OF TESTING BY THE REVIEWER)
+
+Several of HLA-Arena workflows rely on Modeller to perform the homology modeling of a given HLA receptor. This modeling task is integrated into a specific HLA-Arena function (more details below). However, using Modeller requires you to register and obtain your own license key, if you do not already have one. First, follow instructions on the [Modeller registration page](https://salilab.org/modeller/registration.html). 
+
+
+## Using Jupyter Notebook
+
+Each file with a &#39;.ipynb&#39; extension in this folder is a Jupyter notebook allowing you to run one of HLA-Arena workflows. Note that Jupyter Notebook is already installed in this docker image of HLA-Arena. If you are new to Jupyter Notebook, you can check this [tutorial on how to interact with its interface](https://www.youtube.com/watch?v=HW29067qVWk&amp;feature=youtu.be&amp;t=274). Numerous other resources are available online.
+
+
+## Available workflows
+
+[0_minimal_example.ipynb](http://127.0.0.1:8888/notebooks/0_minimal_example.ipynb) (open link in a new tab)
+
+This is the most basic workflow, which will walk you through the steps of HLA modeling, peptide docking and pHLA visualization. You can run all the cells at once, to sequentially execute Modeller, APE-Gen, and NGL Viewer. You can also edit cells to change, for example, the HLA allele name or the peptide sequence.
+
+
+[1_geometry_prediction.ipynb](http://127.0.0.1:8888/notebooks/1_geometry_prediction.ipynb) (open link in a new tab)
+
+This is a short version of the first workflow, which allows you to carry out geometry prediction with DINC. By default, this workflow performs the self-docking of the pHLA complex with PDB code 1E27. You can edit the cell containing this PDB code, to try and reproduce the crystal structure of another complex. You can also edit the cells containing commands, to choose other types of input (e.g., you can use your own PDB files, rather than using a PDB code) or switch between a self-docking and a cross-docking experiment. Note that lines starting with character &#39;#&#39; are not executed; simply remove this character to make them executable by Jupyter Notebook.
+
+
+[1b_geometry_prediction_w-rescoring.ipynb](http://127.0.0.1:8888/notebooks/1b_geometry_prediction_w-rescoring.ipynb) (open link in a new tab)
+
+This is a longer version of the first workflow. It additionally performs the rescoring of all output conformations using different scoring functions. In this workflow, input processing for rescoring is handled by MGLTools, through DINC. This process includes steps to check the protonation state of both the ligand and receptor.
+
+
+[1c_geometry_prediction_paper-demo.ipynb](http://127.0.0.1:8888/notebooks/1c_geometry_prediction_paper-demo.ipynb) (open link in a new tab)
+
+This is a demo version of the first workflow.
+It allows you to reproduce the results reported in our article on HLA-Arena (Antunes et al., 2020) about the cross-docking of the pHLA complex with PDB code 2GTW. 
+Intermediate results have been pre-computed and will be loaded in the notebook for quick visualization.
+You can click the &#34;forward&#34; button in the Jupyter Notebook toolbar to execute the entire workflow and visualize the final results.
+
+
+[2_binding_prediction.ipynb](http://127.0.0.1:8888/notebooks/2_binding_prediction.ipynb) (open link in a new tab)
+
+This is the regular version of our second workflow, which allows you to perform binding prediction using ensembles of bound conformations generated by APE-Gen. 
+As input, you can provide an HLA allele, a list of peptide sequences, and corresponding binding affinities.
+This workflow includes steps for a fast rescoring of the results (which is done by Smina) and correlation with experimental data (when available).
+
+[2b_binding_prediction_w-pdbs.ipynb](http://127.0.0.1:8888/notebooks/2b_binding_prediction_w-pdbs.ipynb) (open link in a new tab)
+
+This is an alterantive version of the previous workflow, to perform binding prediction using ensembles of bound conformations generated by APE-Gen. 
+In addition to the input requested before (HLA allele, list of peptide sequences and binding affinities), this workflow also takes as input the PDB codes for each complex (when available).
+This workflow includes steps for RMSD calculation between modeled complexes and the corresponding crystal structure, a fast rescoring of the results (which is done by Smina), and correlation with experimental binding affinity data (when available).
+
+[2c_binding_prediction_paper-demo.ipynb](http://127.0.0.1:8888/notebooks/2c_binding_prediction_paper-demo.ipynb) (open link in a new tab)
+
+This is a demo version of the second workflow.
+It allows you to reproduce the results reported in our article on HLA-Arena (Antunes et al., 2020) about the prediction of the binding to HLA-A*02:01 for a small dataset of peptides. 
+Intermediate results have been pre-computed and will be loaded in the notebook for quick visualization.
+You can click the &#34;forward&#34; button in the Jupyter Notebook toolbar to execute the entire workflow and visualize the final results.
+
+
+[3_virtual_screening.ipynb](http://127.0.0.1:8888/notebooks/3_virtual_screening.ipynb) (open link in a new tab)
+
+This is the regular version of our third workflow, which allows you to perform a virtual screening of potential HLA binders using structures generated by APE-Gen. 
+As input, you can provide a list of peptide sequences and HLA allele names.
+
+
+[3b_virtual_screening_paper-demo.ipynb](http://127.0.0.1:8888/notebooks/3b_virtual_screening_paper-demo.ipynb) (open link in a new tab)
+
+This is a demo version of the third workflow.
+It allows you to reproduce the results reported in our article on HLA-Arena (Antunes et al., 2020) about the structure-based virtual screening of a large set of potential HLA-binding peptides. 
+Intermediate results have been pre-computed and will be loaded in the notebook for quick visualization.
+You can click the &#34;forward&#34; button in the Jupyter Notebook toolbar to execute the entire workflow and visualize the final results.
+
+&#34;&#34;&#34;
+
+# import all necessary libraries outside the functions
+from subprocess import call, check_output
+from sys import stdout
+from os import remove, path, listdir
+from shutil import copyfile
+import fileinput
+from shlex import quote
+import subprocess
+
+import sys
+sys.path.insert(0, &#34;/APE-Gen&#34;)
+import APE_Gen
+import get_pMHC_pdb
+#import model_receptor
+
+import os
+import copy
+#apegen_env = os.environ
+#dinc_env = copy.deepcopy(apegen_env)
+dinc_env = os.environ.copy()
+dinc_env[&#34;PATH&#34;] = &#34;/dinc/Utilities24:&#34; + dinc_env[&#34;PATH&#34;]
+dinc_env[&#34;PATH&#34;] = &#34;/dinc/bin:&#34; + dinc_env[&#34;PATH&#34;]
+dinc_env[&#34;BABEL_LIBDIR&#34;] = &#34;/dinc/lib/openbabel/2.3.2&#34;
+dinc_env[&#34;BABEL_DATADIR&#34;] = &#34;/dinc/share/openbabel/2.3.2&#34;
+
+import numpy as np
+import nglview
+import glob
+import mdtraj as md
+from matplotlib.colors import to_hex
+import matplotlib as mpl
+
+import pandas as pd
+import seaborn as sns
+from scipy import stats
+import matplotlib.pyplot as plt
+import pickle
+
+#def run_command(command):
+#    process = subprocess.Popen(command.split(), env=dinc_env, stdout=subprocess.PIPE)
+#    while True:
+#        output = process.stdout.readline()
+#        if output == &#39;&#39; and process.poll() is not None:
+#            break
+#        if output:
+#            print(output.strip())
+#    rc = process.poll()
+#    return rc
+ 
+##############
+#
+#  STEP 1: Input Processing
+#
+
+def model_hla(allele_name, num_models=2):
+    &#34;&#34;&#34;
+    Run MODELLER to create an HLA structure
+
+    Runs MODELLER to create an HLA structure of the input allele. The sequence of the alpha chain of the allele is downloaded.
+    Then a template PDB of a different HLA structure from the same supertype is downloaded.
+
+    Parameters:
+    allele_name (str or (str,str)): Either allele name with format like &#34;HLA-A*24:02&#34; or a pair of strings, where the first is the location
+    of the fasta file with the alpha chain sequence and the second is the template pdb file (ex. allele_name=(alpha.fasta, template.pdb))
+    num_models (int): Number of models to generate with MODELLER
+
+    Returns:
+    str: Name of the HLA structure in PDB format
+
+    &#34;&#34;&#34;
+
+    import model_receptor
+
+    if allele_name[:4] != &#34;HLA-&#34;: # assume giving fasta and pdb template
+
+        alpha_chain_seq = allele_name[0]
+        pdb_template = allele_name[1]
+        alpha_chain_seq_reformat = alpha_chain_seq
+        pdb_template_reformat = pdb_template
+
+        if alpha_chain_seq[-6:] != &#34;.fasta&#34;: # trying to use allele name to pull sequence
+            if &#34;*&#34; not in alpha_chain_seq: alpha_chain_seq_reformat = alpha_chain_seq_reformat[:5] + &#34;*&#34; + alpha_chain_seq_reformat[5:]
+            if &#34;:&#34; not in alpha_chain_seq: allele_name_reformatted = alpha_chain_seq_reformat[:-2] + &#34;:&#34; + alpha_chain_seq_reformat[-2:]
+        if pdb_template[-4:] != &#34;.pdb&#34;: # trying to use allele name to imply supertype
+            if &#34;*&#34; not in pdb_template: pdb_template_reformat = pdb_template_reformat[:5] + &#34;*&#34; + pdb_template_reformat[5:]
+            if &#34;:&#34; not in pdb_template: pdb_template_reformat = pdb_template_reformat[:-2] + &#34;:&#34; + pdb_template_reformat[-2:]
+
+        model_receptor.main([alpha_chain_seq_reformat, pdb_template_reformat, &#34;-n&#34;, str(num_models)])
+        return &#34;best_model.pdb&#34;
+
+    allele_name_reformatted = allele_name
+    if &#34;*&#34; not in allele_name: allele_name_reformatted = allele_name_reformatted[:5] + &#34;*&#34; + allele_name_reformatted[5:]
+    if &#34;:&#34; not in allele_name: allele_name_reformatted = allele_name_reformatted[:-2] + &#34;:&#34; + allele_name_reformatted[-2:]
+    hla_allele_name = allele_name_reformatted.replace(&#34;*&#34;, &#34;&#34;)
+    hla_allele_name = hla_allele_name.replace(&#34;:&#34;, &#34;&#34;)
+    hla_allele = hla_allele_name + &#34;.pdb&#34;
+
+    if os.path.exists(hla_allele):
+        print(&#34;Already found &#34; + hla_allele)
+        return hla_allele
+    
+    model_receptor.main([allele_name_reformatted, allele_name_reformatted, &#34;-n&#34;, str(num_models)])
+
+    call([&#34;mv best_model.pdb &#34; + hla_allele], shell=True)
+    return hla_allele
+
+def download_pHLA_pdb(pdbid):
+    &#34;&#34;&#34;
+    Download PDB of a pHLA
+
+    Downloads PDB of a pHLA where the chains are relabeled such that the alpha chain is labeled &#34;A&#34;,
+    the beta-2 microglobulin chain is labeled &#34;B&#34;,
+    and the peptide is labeled &#34;C&#34;
+
+    Parameters:
+    pdbid (str): 4-letter PDB code
+
+    Returns:
+    str: Name of the pHLA structure in PDB format
+
+    &#34;&#34;&#34;
+
+    if not os.path.exists(pdbid + &#34;.pdb&#34;): get_pMHC_pdb.main([pdbid])
+    else: print(&#34;Found &#34; + pdbid)
+    return pdbid + &#34;.pdb&#34;
+
+
+## this function doesn&#39;t work yet
+#def split_pdb(filename, prefix, local_folder):
+#    # split a pdb file of a ligand-receptor complex into two files
+#    ligand = open(path.join(local_folder, prefix+&#34;_ligand.pdb&#34;), &#34;w+&#34;)
+#    receptor = open(path.join(local_folder, prefix+&#34;_receptor.pdb&#34;), &#34;w+&#34;)
+#
+#    curr_file = receptor
+#    for line in fileinput.input(path.join(local_folder, filename)):
+#        if line.startswith(&#34;TER&#34;):
+#            curr_file.write(line,)
+#            curr_file = ligand
+#        else:
+#            curr_file.write(line,)
+#    fileinput.close()
+
+
+###############
+#
+#  STEP 2: Peptide docking
+#
+
+def dock(peptide, hla, useOpenMM=False, useGPU=False):
+    &#34;&#34;&#34;
+    Run APE-Gen
+
+    Runs APE-Gen for a given peptide sequence and HLA structure. 
+
+    Parameters:
+    peptide (str): Sequence of peptide to dock
+    hla (str): Location of HLA structure to dock peptide
+    useOpenMM (bool): Whether to use do an extra minimization step using OpenMM on the whole ensemble
+    useGPU (bool): Whether to use the GPU when performing extra minimization step. Currently not working within Docker image.
+
+    Returns:
+    str: Location of best scoring structure that has been minimized with OpenMM
+
+    &#34;&#34;&#34;
+   
+    best_scoring_conf = os.getcwd() + &#34;/0/openmm_min_energy_system.pdb&#34;
+    if os.path.exists(best_scoring_conf): return best_scoring_conf
+ 
+    args = [peptide, hla]
+    if useOpenMM: args.append(&#34;-o&#34;)
+    if useGPU: args.append(&#34;--use_gpu&#34;)
+    APE_Gen.main(args)
+
+    if not useOpenMM:
+        print(&#34;Minimizing best scoring conf&#34;)
+        call([&#34;pdbfixer 0/min_energy_system.pdb --output=0/min_energy_system.pdb&#34;], shell=True)
+        APE_Gen.minimizeConf(&#34;0/min_energy_system.pdb&#34;, &#34;0/openmm_min_energy_system.pdb&#34;)
+
+    return best_scoring_conf
+
+
+def set_dinc_params(params):
+    &#34;&#34;&#34;
+     params: dict where keys are params and values are the new values to set the param to
+             only contains params that should be changed
+    &#34;&#34;&#34;
+
+    # copy params.yml file
+    call([&#34;cp /dinc/example/defaults.yml ./params.yml&#34;], shell=True)
+    call([&#34;cp /dinc/example/defaults.yml .&#34;], shell=True) # dinc binary needs this for some reason
+
+    # change params
+    for key in params.keys():
+        command = &#34;sed -i &#39;/&#34;+key+&#34;:/ c\\&#34;+key+&#34;: &#34;+params[key]+&#34;&#39; params.yml&#34;
+        call([command], shell=True)
+
+    return
+    # THIS PRODUCES AN ERROR FOR SOME REASON
+    replaced = False
+    for line in fileinput.input(&#34;params.yml&#34;, inplace=True):
+        replaced = False
+        for key in params.keys():
+            if line.startswith(key):
+                print(key+&#34;: &#34;+params[key],)
+                replaced = True
+                break
+        if not replaced:
+            print(line,)
+    fileinput.close()
+
+def dock_with_DINC(ligand, receptor, output_file, params=False):
+    &#34;&#34;&#34;
+    Run DINC
+
+    Runs DINC for a given ligand and receptor 
+
+    Parameters:
+    ligand (str): ligand to dock
+    receptor (str): Location of HLA structure to dock ligand
+    output_file (bool): Name of output file
+    params (bool): Set to true if using own params.yml file
+
+    Returns:
+    str: Location of best scoring structure that has been minimized with OpenMM
+
+    &#34;&#34;&#34;
+
+    #call([&#34;cp /dinc/example/defaults.yml params.yml&#34;], shell=True)
+    call([&#34;cp /dinc/example/defaults.yml .&#34;], shell=True) # dinc binary needs this for some reason
+
+    #call([&#34;sed -i \&#34;s/job_type: crossdocking/job_type: redocking/g\&#34; params.yml&#34;], shell=True)
+
+    # dock peptide using DINC
+    if params:
+        command = &#34;/dinc/dinc -l &#34; + ligand + &#34; -r &#34; + receptor + &#34; -p params.yml&#34;
+    else:
+        command = &#34;/dinc/dinc -l &#34; + ligand + &#34; -r &#34; + receptor
+
+    p = subprocess.Popen(command.split(), env=dinc_env)
+    p.wait()
+
+    call([&#34;cp dincresults.txt &#34; + output_file], shell=True)
+        
+
+###############
+#
+#  STEP 3: Data analysis
+#
+
+def rescore_complex(path_to_complex, func):
+    &#34;&#34;&#34;
+    Rescore using DINC wrapper
+
+    Rescore using DINC wrapper. Calls MGLTools to prepare ligand and receptor
+
+    Parameters:
+    path_to_comlex (str): path to the pdb file containing complex
+    func (str): smina function flag, can take values: vina, AD4, vinardo
+
+    Returns:
+    float: Scoring according to &#34;func&#34;
+
+    &#34;&#34;&#34;
+
+    local_folder = &#34;temp&#34;
+    call([&#34;mkdir -p &#34; + local_folder], shell=True)
+    os.chdir(local_folder)
+    call([&#34;cp /dinc/example/defaults.yml params.yml&#34;], shell=True)
+    call([&#34;sed -i \&#34;s/rescoring: Vina/rescoring: &#34; + func + &#34;/g\&#34; params.yml&#34;], shell=True)
+    call([&#34;sed -i \&#34;s/job_type: crossdocking/job_type: scoring/g\&#34; params.yml&#34;], shell=True)
+
+    call([&#34;cp &#34; + path_to_complex + &#34; complex.pdb&#34;], shell=True)
+    call([&#34;grep \&#34;[A-Z] C  \&#34; complex.pdb &gt; ligand.pdb&#34;], shell=True)
+    call([&#34;cp complex.pdb receptor.pdb&#34;], shell=True)
+    call([&#34;sed -i \&#34;/[A-Z] C/d\&#34; receptor.pdb&#34;], shell=True)
+    ligand = &#34;ligand.pdb&#34;
+    receptor = &#34;receptor.pdb&#34;
+    command = &#34;/dinc/dinc -l ligand.pdb -r receptor.pdb -p params.yml&#34;
+    
+    # dinc needs this file in the directory for some reason
+    call([&#34;cp /dinc/example/defaults.yml .&#34;], shell=True)
+    p = subprocess.Popen(command.split(), env=dinc_env)
+    p.wait()
+
+    for line in open(&#34;dincresults.txt&#34;).readlines():
+        if line.startswith(&#34;Binding Affinity:&#34;):
+            score = float(line.split()[2])
+            break
+    
+    os.chdir(&#34;..&#34;)
+    call([&#34;rm -r &#34; + local_folder], shell=True)
+    return score
+
+def rescore_complex_simple_smina(path_to_complex, func):
+    &#34;&#34;&#34;
+    Rescore using SMINA
+
+    Rescore using SMINA. This version is faster than arena.rescore_complex since SMINA handles I/O more efficiently.
+    Note: pdb must have A,B corresponding to alpha and beta chain of receptor and C to ligand
+
+    Parameters:
+    path_to_comlex (str): path to the pdb file containing complex
+    func (str): smina function flag, can take values: vina, vinardo, ad4_scoring
+
+    Returns:
+    float: Scoring according to &#34;func&#34;
+
+    &#34;&#34;&#34;
+
+    call ([&#34;awk \&#39;{if ($5==\&#34;A\&#34;) print $0}\&#39; &#34;+path_to_complex+&#34; &gt; tmp_receptor1.pdb&#34;], shell=True)
+
+    call ([&#34;awk \&#39;{if ($5==\&#34;B\&#34;) print $0}\&#39; &#34;+path_to_complex+&#34; &gt;&gt; tmp_receptor1.pdb&#34;], shell=True)
+    call ([&#34;awk \&#39;{if ($5==\&#34;C\&#34;) print $0}\&#39; &#34;+path_to_complex+&#34; &gt; tmp_ligand1.pdb&#34;], shell=True)
+    call ([&#34;sed -i \&#34;s/          /           /g\&#34; tmp_ligand1.pdb&#34;], shell=True)
+    call ([&#34;sed -i \&#34;s/          /           /g\&#34; tmp_receptor1.pdb&#34;], shell=True)
+
+    call ([&#34;smina --receptor tmp_receptor1.pdb --ligand tmp_ligand1.pdb --scoring &#34;+func+&#34; --score_only &gt; tmp_out1.pdb&#34;], shell=True)
+    
+    val = 0
+    with open(&#34;tmp_out1.pdb&#34;) as f1:
+        for line in f1:
+            if &#34;Affinity:&#34; in line:
+                val = line.split()[1]
+                break
+
+    call ([&#34;rm tmp_receptor1.pdb&#34;], shell=True)
+    call ([&#34;rm tmp_ligand1.pdb&#34;], shell=True)
+    call ([&#34;rm tmp_out1.pdb&#34;], shell=True)
+    return float(val)
+   
+    
+
+
+def rescore(ligands, receptor, func):
+    &#34;&#34;&#34;
+     ligands: list of all files with ligand conformations to rescore
+     receptor: single file with receptor for rescoring
+     func: rescoring function
+    &#34;&#34;&#34;
+
+    set_dinc_params({&#34;rescoring&#34;:func, &#34;job_type&#34;:&#34;scoring&#34;})
+    
+    for l in ligands:
+        dock_with_DINC(l, receptor, l+&#34;results&#34;, params=True)
+        call([&#34;cat %sresults &gt;&gt; rescoreresults.txt&#34; % l], shell=True)
+
+        
+
+def filter_by_rmsd(filenames, reference, cutoff=4):
+    &#34;&#34;&#34;
+     Filter the conformations by backbone rmsd
+     given filenames (.pdb) of ligand conformations and filename (.pdb) of reference ligand
+     and rmsd cutoff (default 4 angstrom)
+     return list of filenames with rmsd &lt;= cutoff
+    &#34;&#34;&#34;
+    final_filenames = []
+    
+    # load backbone only of reference ligand
+    ref_pep_atoms = md.load(reference).top.select(&#34;backbone&#34;)
+    ref_pdb = md.load(reference, atom_indices = ref_pep_atoms)
+
+    # filter conformations
+    for fname in filenames:
+        conf = md.load(fname, atom_indices = md.load(fname).top.select(&#34;backbone&#34;))
+
+        # rmsd calculation
+        delta = conf.xyz - ref_pdb.xyz
+        rmsd = np.sqrt(sum(sum((delta * delta).T)) / len(delta))
+
+        if rmsd &lt;= cutoff:
+            final_filenames.append(fname)
+
+    return final_filenames
+
+def combine_flex_and_rigid_receptor(flex_filename, receptor_filename, output):
+    &#34;&#34;&#34;
+    Combine the flexible residues with the rest of the receptor in one file
+    given filenames for the entire receptor (.pdb or .pdbqt) and just the flexible residues (.pdb), 
+    and the name of the combined file (.pdb)
+    &#34;&#34;&#34;
+    
+    call([&#34;cp &#34;+receptor_filename+&#34; &#34;+output], shell=True)
+    with open(flex_filename) as flex:
+        for flex_line in flex.readlines():
+            for line in fileinput.input(output, inplace=True):
+                if flex_line[12:27] == line[12:27]:
+                    print(flex_line,) 
+                else:
+                    print(line,)
+    fileinput.close()
+
+
+def visualize(structures):
+    &#34;&#34;&#34;
+    Visualize set of structures
+
+    Runs NGLView to visualize structures 
+
+    Parameters:
+    structures (str or list of str): Location of PDB files to visualize
+
+    Returns:
+    NGLView Obj: Widget for Jupyter notebook visualization
+
+    &#34;&#34;&#34;
+
+    widget = nglview.NGLWidget()
+    widget.clear_representations()
+
+    if isinstance(structures, str):
+
+        s = md.load(structures)
+        widget.add_trajectory(s)
+
+    else:
+        for s in structures:
+            widget.add_trajectory(md.load(s))
+
+    return widget
+
+def visualize_ensemble(path_to_ensemble=&#34;./&#34;):
+    &#34;&#34;&#34;
+    Visualize ensemble produced by APE-Gen
+
+    Runs NGLView to visualize the ensemble of conformations outputed by APE-Gen
+
+    Parameters:
+    path_to_ensemble (str): Location of PDB files of the ensemble
+
+    Returns:
+    NGLView Obj: Widget for Jupyter notebook visualization
+
+    &#34;&#34;&#34;
+
+    widget = nglview.NGLWidget()
+    widget.clear_representations()
+
+    ensemble = glob.glob(path_to_ensemble + &#34;0/full_system_confs/*.pdb&#34;)
+    
+    i = 0
+    for conf_str in ensemble:
+        struct = md.load(conf_str, atom_indices=md.load(conf_str).top.select(&#34;chainid == 2&#34;))
+        widget.add_trajectory(struct)
+        widget.add_licorice(component=i)
+        widget.remove_cartoon(component=i)
+        i = i + 1
+
+    return widget
+
+def visualize_separate(peptides, receptor = None, colors = None):
+    &#34;&#34;&#34;
+    Visualize ligand and receptor separately
+
+    Runs NGLView to visualize peptide conformations as well as the receptor (optional)
+
+    Parameters:
+    peptides (list of str): Location of PDB files of the peptides to visualize
+    receptor (str): Location of the receptor to plot using surface mode
+    colors (list of str): list of colors to use for the peptide conformations
+
+    Returns:
+    NGLView Obj: Widget for Jupyter notebook visualization
+
+    &#34;&#34;&#34;
+    call([&#34;jupyter-nbextension enable --py --sys-prefix widgetsnbextension&#34;], shell=True)
+    call([&#34;jupyter-nbextension enable nglview --py --sys-prefix&#34;], shell=True)
+
+    import nglview
+    import glob
+    import mdtraj as md
+    from matplotlib.colors import to_hex
+    import matplotlib as mpl
+    from matplotlib.colors import to_hex
+    
+    widget = nglview.NGLWidget()
+    widget.clear_representations()
+
+    i = 0
+    for p in peptides:
+        struct = md.load(quote(p))
+        widget.add_trajectory(struct)
+        widget.add_licorice(component=i)
+        widget.remove_cartoon(component=i)
+        if colors:
+            widget.update_licorice(color=colors[i], component = i)
+        i = i + 1
+
+        
+    if receptor:
+        struct = md.load(receptor)
+        widget.add_trajectory(struct)
+        widget.add_surface(component=i)
+        widget.remove_cartoon(component=i)
+
+        
+    return widget</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="HLA_Arena.combine_flex_and_rigid_receptor"><code class="name flex">
+<span>def <span class="ident">combine_flex_and_rigid_receptor</span></span>(<span>flex_filename, receptor_filename, output)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Combine the flexible residues with the rest of the receptor in one file
+given filenames for the entire receptor (.pdb or .pdbqt) and just the flexible residues (.pdb),
+and the name of the combined file (.pdb)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def combine_flex_and_rigid_receptor(flex_filename, receptor_filename, output):
+    &#34;&#34;&#34;
+    Combine the flexible residues with the rest of the receptor in one file
+    given filenames for the entire receptor (.pdb or .pdbqt) and just the flexible residues (.pdb), 
+    and the name of the combined file (.pdb)
+    &#34;&#34;&#34;
+    
+    call([&#34;cp &#34;+receptor_filename+&#34; &#34;+output], shell=True)
+    with open(flex_filename) as flex:
+        for flex_line in flex.readlines():
+            for line in fileinput.input(output, inplace=True):
+                if flex_line[12:27] == line[12:27]:
+                    print(flex_line,) 
+                else:
+                    print(line,)
+    fileinput.close()</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.dock"><code class="name flex">
+<span>def <span class="ident">dock</span></span>(<span>peptide, hla, useOpenMM=False, useGPU=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Run APE-Gen</p>
+<p>Runs APE-Gen for a given peptide sequence and HLA structure. </p>
+<p>Parameters:
+peptide (str): Sequence of peptide to dock
+hla (str): Location of HLA structure to dock peptide
+useOpenMM (bool): Whether to use do an extra minimization step using OpenMM on the whole ensemble
+useGPU (bool): Whether to use the GPU when performing extra minimization step. Currently not working within Docker image.</p>
+<p>Returns:
+str: Location of best scoring structure that has been minimized with OpenMM</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dock(peptide, hla, useOpenMM=False, useGPU=False):
+    &#34;&#34;&#34;
+    Run APE-Gen
+
+    Runs APE-Gen for a given peptide sequence and HLA structure. 
+
+    Parameters:
+    peptide (str): Sequence of peptide to dock
+    hla (str): Location of HLA structure to dock peptide
+    useOpenMM (bool): Whether to use do an extra minimization step using OpenMM on the whole ensemble
+    useGPU (bool): Whether to use the GPU when performing extra minimization step. Currently not working within Docker image.
+
+    Returns:
+    str: Location of best scoring structure that has been minimized with OpenMM
+
+    &#34;&#34;&#34;
+   
+    best_scoring_conf = os.getcwd() + &#34;/0/openmm_min_energy_system.pdb&#34;
+    if os.path.exists(best_scoring_conf): return best_scoring_conf
+ 
+    args = [peptide, hla]
+    if useOpenMM: args.append(&#34;-o&#34;)
+    if useGPU: args.append(&#34;--use_gpu&#34;)
+    APE_Gen.main(args)
+
+    if not useOpenMM:
+        print(&#34;Minimizing best scoring conf&#34;)
+        call([&#34;pdbfixer 0/min_energy_system.pdb --output=0/min_energy_system.pdb&#34;], shell=True)
+        APE_Gen.minimizeConf(&#34;0/min_energy_system.pdb&#34;, &#34;0/openmm_min_energy_system.pdb&#34;)
+
+    return best_scoring_conf</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.dock_with_DINC"><code class="name flex">
+<span>def <span class="ident">dock_with_DINC</span></span>(<span>ligand, receptor, output_file, params=False)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Run DINC</p>
+<p>Runs DINC for a given ligand and receptor </p>
+<p>Parameters:
+ligand (str): ligand to dock
+receptor (str): Location of HLA structure to dock ligand
+output_file (bool): Name of output file
+params (bool): Set to true if using own params.yml file</p>
+<p>Returns:
+str: Location of best scoring structure that has been minimized with OpenMM</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dock_with_DINC(ligand, receptor, output_file, params=False):
+    &#34;&#34;&#34;
+    Run DINC
+
+    Runs DINC for a given ligand and receptor 
+
+    Parameters:
+    ligand (str): ligand to dock
+    receptor (str): Location of HLA structure to dock ligand
+    output_file (bool): Name of output file
+    params (bool): Set to true if using own params.yml file
+
+    Returns:
+    str: Location of best scoring structure that has been minimized with OpenMM
+
+    &#34;&#34;&#34;
+
+    #call([&#34;cp /dinc/example/defaults.yml params.yml&#34;], shell=True)
+    call([&#34;cp /dinc/example/defaults.yml .&#34;], shell=True) # dinc binary needs this for some reason
+
+    #call([&#34;sed -i \&#34;s/job_type: crossdocking/job_type: redocking/g\&#34; params.yml&#34;], shell=True)
+
+    # dock peptide using DINC
+    if params:
+        command = &#34;/dinc/dinc -l &#34; + ligand + &#34; -r &#34; + receptor + &#34; -p params.yml&#34;
+    else:
+        command = &#34;/dinc/dinc -l &#34; + ligand + &#34; -r &#34; + receptor
+
+    p = subprocess.Popen(command.split(), env=dinc_env)
+    p.wait()
+
+    call([&#34;cp dincresults.txt &#34; + output_file], shell=True)</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.download_pHLA_pdb"><code class="name flex">
+<span>def <span class="ident">download_pHLA_pdb</span></span>(<span>pdbid)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Download PDB of a pHLA</p>
+<p>Downloads PDB of a pHLA where the chains are relabeled such that the alpha chain is labeled "A",
+the beta-2 microglobulin chain is labeled "B",
+and the peptide is labeled "C"</p>
+<p>Parameters:
+pdbid (str): 4-letter PDB code</p>
+<p>Returns:
+str: Name of the pHLA structure in PDB format</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def download_pHLA_pdb(pdbid):
+    &#34;&#34;&#34;
+    Download PDB of a pHLA
+
+    Downloads PDB of a pHLA where the chains are relabeled such that the alpha chain is labeled &#34;A&#34;,
+    the beta-2 microglobulin chain is labeled &#34;B&#34;,
+    and the peptide is labeled &#34;C&#34;
+
+    Parameters:
+    pdbid (str): 4-letter PDB code
+
+    Returns:
+    str: Name of the pHLA structure in PDB format
+
+    &#34;&#34;&#34;
+
+    if not os.path.exists(pdbid + &#34;.pdb&#34;): get_pMHC_pdb.main([pdbid])
+    else: print(&#34;Found &#34; + pdbid)
+    return pdbid + &#34;.pdb&#34;</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.filter_by_rmsd"><code class="name flex">
+<span>def <span class="ident">filter_by_rmsd</span></span>(<span>filenames, reference, cutoff=4)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Filter the conformations by backbone rmsd
+given filenames (.pdb) of ligand conformations and filename (.pdb) of reference ligand
+and rmsd cutoff (default 4 angstrom)
+return list of filenames with rmsd &lt;= cutoff</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filter_by_rmsd(filenames, reference, cutoff=4):
+    &#34;&#34;&#34;
+     Filter the conformations by backbone rmsd
+     given filenames (.pdb) of ligand conformations and filename (.pdb) of reference ligand
+     and rmsd cutoff (default 4 angstrom)
+     return list of filenames with rmsd &lt;= cutoff
+    &#34;&#34;&#34;
+    final_filenames = []
+    
+    # load backbone only of reference ligand
+    ref_pep_atoms = md.load(reference).top.select(&#34;backbone&#34;)
+    ref_pdb = md.load(reference, atom_indices = ref_pep_atoms)
+
+    # filter conformations
+    for fname in filenames:
+        conf = md.load(fname, atom_indices = md.load(fname).top.select(&#34;backbone&#34;))
+
+        # rmsd calculation
+        delta = conf.xyz - ref_pdb.xyz
+        rmsd = np.sqrt(sum(sum((delta * delta).T)) / len(delta))
+
+        if rmsd &lt;= cutoff:
+            final_filenames.append(fname)
+
+    return final_filenames</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.model_hla"><code class="name flex">
+<span>def <span class="ident">model_hla</span></span>(<span>allele_name, num_models=2)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Run MODELLER to create an HLA structure</p>
+<p>Runs MODELLER to create an HLA structure of the input allele. The sequence of the alpha chain of the allele is downloaded.
+Then a template PDB of a different HLA structure from the same supertype is downloaded.</p>
+<p>Parameters:
+allele_name (str or (str,str)): Either allele name with format like "HLA-A*24:02" or a pair of strings, where the first is the location
+of the fasta file with the alpha chain sequence and the second is the template pdb file (ex. allele_name=(alpha.fasta, template.pdb))
+num_models (int): Number of models to generate with MODELLER</p>
+<p>Returns:
+str: Name of the HLA structure in PDB format</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def model_hla(allele_name, num_models=2):
+    &#34;&#34;&#34;
+    Run MODELLER to create an HLA structure
+
+    Runs MODELLER to create an HLA structure of the input allele. The sequence of the alpha chain of the allele is downloaded.
+    Then a template PDB of a different HLA structure from the same supertype is downloaded.
+
+    Parameters:
+    allele_name (str or (str,str)): Either allele name with format like &#34;HLA-A*24:02&#34; or a pair of strings, where the first is the location
+    of the fasta file with the alpha chain sequence and the second is the template pdb file (ex. allele_name=(alpha.fasta, template.pdb))
+    num_models (int): Number of models to generate with MODELLER
+
+    Returns:
+    str: Name of the HLA structure in PDB format
+
+    &#34;&#34;&#34;
+
+    import model_receptor
+
+    if allele_name[:4] != &#34;HLA-&#34;: # assume giving fasta and pdb template
+
+        alpha_chain_seq = allele_name[0]
+        pdb_template = allele_name[1]
+        alpha_chain_seq_reformat = alpha_chain_seq
+        pdb_template_reformat = pdb_template
+
+        if alpha_chain_seq[-6:] != &#34;.fasta&#34;: # trying to use allele name to pull sequence
+            if &#34;*&#34; not in alpha_chain_seq: alpha_chain_seq_reformat = alpha_chain_seq_reformat[:5] + &#34;*&#34; + alpha_chain_seq_reformat[5:]
+            if &#34;:&#34; not in alpha_chain_seq: allele_name_reformatted = alpha_chain_seq_reformat[:-2] + &#34;:&#34; + alpha_chain_seq_reformat[-2:]
+        if pdb_template[-4:] != &#34;.pdb&#34;: # trying to use allele name to imply supertype
+            if &#34;*&#34; not in pdb_template: pdb_template_reformat = pdb_template_reformat[:5] + &#34;*&#34; + pdb_template_reformat[5:]
+            if &#34;:&#34; not in pdb_template: pdb_template_reformat = pdb_template_reformat[:-2] + &#34;:&#34; + pdb_template_reformat[-2:]
+
+        model_receptor.main([alpha_chain_seq_reformat, pdb_template_reformat, &#34;-n&#34;, str(num_models)])
+        return &#34;best_model.pdb&#34;
+
+    allele_name_reformatted = allele_name
+    if &#34;*&#34; not in allele_name: allele_name_reformatted = allele_name_reformatted[:5] + &#34;*&#34; + allele_name_reformatted[5:]
+    if &#34;:&#34; not in allele_name: allele_name_reformatted = allele_name_reformatted[:-2] + &#34;:&#34; + allele_name_reformatted[-2:]
+    hla_allele_name = allele_name_reformatted.replace(&#34;*&#34;, &#34;&#34;)
+    hla_allele_name = hla_allele_name.replace(&#34;:&#34;, &#34;&#34;)
+    hla_allele = hla_allele_name + &#34;.pdb&#34;
+
+    if os.path.exists(hla_allele):
+        print(&#34;Already found &#34; + hla_allele)
+        return hla_allele
+    
+    model_receptor.main([allele_name_reformatted, allele_name_reformatted, &#34;-n&#34;, str(num_models)])
+
+    call([&#34;mv best_model.pdb &#34; + hla_allele], shell=True)
+    return hla_allele</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.rescore"><code class="name flex">
+<span>def <span class="ident">rescore</span></span>(<span>ligands, receptor, func)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>ligands: list of all files with ligand conformations to rescore
+receptor: single file with receptor for rescoring
+func: rescoring function</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rescore(ligands, receptor, func):
+    &#34;&#34;&#34;
+     ligands: list of all files with ligand conformations to rescore
+     receptor: single file with receptor for rescoring
+     func: rescoring function
+    &#34;&#34;&#34;
+
+    set_dinc_params({&#34;rescoring&#34;:func, &#34;job_type&#34;:&#34;scoring&#34;})
+    
+    for l in ligands:
+        dock_with_DINC(l, receptor, l+&#34;results&#34;, params=True)
+        call([&#34;cat %sresults &gt;&gt; rescoreresults.txt&#34; % l], shell=True)</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.rescore_complex"><code class="name flex">
+<span>def <span class="ident">rescore_complex</span></span>(<span>path_to_complex, func)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Rescore using DINC wrapper</p>
+<p>Rescore using DINC wrapper. Calls MGLTools to prepare ligand and receptor</p>
+<p>Parameters:
+path_to_comlex (str): path to the pdb file containing complex
+func (str): smina function flag, can take values: vina, AD4, vinardo</p>
+<p>Returns:
+float: Scoring according to "func"</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rescore_complex(path_to_complex, func):
+    &#34;&#34;&#34;
+    Rescore using DINC wrapper
+
+    Rescore using DINC wrapper. Calls MGLTools to prepare ligand and receptor
+
+    Parameters:
+    path_to_comlex (str): path to the pdb file containing complex
+    func (str): smina function flag, can take values: vina, AD4, vinardo
+
+    Returns:
+    float: Scoring according to &#34;func&#34;
+
+    &#34;&#34;&#34;
+
+    local_folder = &#34;temp&#34;
+    call([&#34;mkdir -p &#34; + local_folder], shell=True)
+    os.chdir(local_folder)
+    call([&#34;cp /dinc/example/defaults.yml params.yml&#34;], shell=True)
+    call([&#34;sed -i \&#34;s/rescoring: Vina/rescoring: &#34; + func + &#34;/g\&#34; params.yml&#34;], shell=True)
+    call([&#34;sed -i \&#34;s/job_type: crossdocking/job_type: scoring/g\&#34; params.yml&#34;], shell=True)
+
+    call([&#34;cp &#34; + path_to_complex + &#34; complex.pdb&#34;], shell=True)
+    call([&#34;grep \&#34;[A-Z] C  \&#34; complex.pdb &gt; ligand.pdb&#34;], shell=True)
+    call([&#34;cp complex.pdb receptor.pdb&#34;], shell=True)
+    call([&#34;sed -i \&#34;/[A-Z] C/d\&#34; receptor.pdb&#34;], shell=True)
+    ligand = &#34;ligand.pdb&#34;
+    receptor = &#34;receptor.pdb&#34;
+    command = &#34;/dinc/dinc -l ligand.pdb -r receptor.pdb -p params.yml&#34;
+    
+    # dinc needs this file in the directory for some reason
+    call([&#34;cp /dinc/example/defaults.yml .&#34;], shell=True)
+    p = subprocess.Popen(command.split(), env=dinc_env)
+    p.wait()
+
+    for line in open(&#34;dincresults.txt&#34;).readlines():
+        if line.startswith(&#34;Binding Affinity:&#34;):
+            score = float(line.split()[2])
+            break
+    
+    os.chdir(&#34;..&#34;)
+    call([&#34;rm -r &#34; + local_folder], shell=True)
+    return score</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.rescore_complex_simple_smina"><code class="name flex">
+<span>def <span class="ident">rescore_complex_simple_smina</span></span>(<span>path_to_complex, func)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Rescore using SMINA</p>
+<p>Rescore using SMINA. This version is faster than arena.rescore_complex since SMINA handles I/O more efficiently.
+Note: pdb must have A,B corresponding to alpha and beta chain of receptor and C to ligand</p>
+<p>Parameters:
+path_to_comlex (str): path to the pdb file containing complex
+func (str): smina function flag, can take values: vina, vinardo, ad4_scoring</p>
+<p>Returns:
+float: Scoring according to "func"</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def rescore_complex_simple_smina(path_to_complex, func):
+    &#34;&#34;&#34;
+    Rescore using SMINA
+
+    Rescore using SMINA. This version is faster than arena.rescore_complex since SMINA handles I/O more efficiently.
+    Note: pdb must have A,B corresponding to alpha and beta chain of receptor and C to ligand
+
+    Parameters:
+    path_to_comlex (str): path to the pdb file containing complex
+    func (str): smina function flag, can take values: vina, vinardo, ad4_scoring
+
+    Returns:
+    float: Scoring according to &#34;func&#34;
+
+    &#34;&#34;&#34;
+
+    call ([&#34;awk \&#39;{if ($5==\&#34;A\&#34;) print $0}\&#39; &#34;+path_to_complex+&#34; &gt; tmp_receptor1.pdb&#34;], shell=True)
+
+    call ([&#34;awk \&#39;{if ($5==\&#34;B\&#34;) print $0}\&#39; &#34;+path_to_complex+&#34; &gt;&gt; tmp_receptor1.pdb&#34;], shell=True)
+    call ([&#34;awk \&#39;{if ($5==\&#34;C\&#34;) print $0}\&#39; &#34;+path_to_complex+&#34; &gt; tmp_ligand1.pdb&#34;], shell=True)
+    call ([&#34;sed -i \&#34;s/          /           /g\&#34; tmp_ligand1.pdb&#34;], shell=True)
+    call ([&#34;sed -i \&#34;s/          /           /g\&#34; tmp_receptor1.pdb&#34;], shell=True)
+
+    call ([&#34;smina --receptor tmp_receptor1.pdb --ligand tmp_ligand1.pdb --scoring &#34;+func+&#34; --score_only &gt; tmp_out1.pdb&#34;], shell=True)
+    
+    val = 0
+    with open(&#34;tmp_out1.pdb&#34;) as f1:
+        for line in f1:
+            if &#34;Affinity:&#34; in line:
+                val = line.split()[1]
+                break
+
+    call ([&#34;rm tmp_receptor1.pdb&#34;], shell=True)
+    call ([&#34;rm tmp_ligand1.pdb&#34;], shell=True)
+    call ([&#34;rm tmp_out1.pdb&#34;], shell=True)
+    return float(val)</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.set_dinc_params"><code class="name flex">
+<span>def <span class="ident">set_dinc_params</span></span>(<span>params)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>params: dict where keys are params and values are the new values to set the param to
+only contains params that should be changed</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def set_dinc_params(params):
+    &#34;&#34;&#34;
+     params: dict where keys are params and values are the new values to set the param to
+             only contains params that should be changed
+    &#34;&#34;&#34;
+
+    # copy params.yml file
+    call([&#34;cp /dinc/example/defaults.yml ./params.yml&#34;], shell=True)
+    call([&#34;cp /dinc/example/defaults.yml .&#34;], shell=True) # dinc binary needs this for some reason
+
+    # change params
+    for key in params.keys():
+        command = &#34;sed -i &#39;/&#34;+key+&#34;:/ c\\&#34;+key+&#34;: &#34;+params[key]+&#34;&#39; params.yml&#34;
+        call([command], shell=True)
+
+    return
+    # THIS PRODUCES AN ERROR FOR SOME REASON
+    replaced = False
+    for line in fileinput.input(&#34;params.yml&#34;, inplace=True):
+        replaced = False
+        for key in params.keys():
+            if line.startswith(key):
+                print(key+&#34;: &#34;+params[key],)
+                replaced = True
+                break
+        if not replaced:
+            print(line,)
+    fileinput.close()</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.visualize"><code class="name flex">
+<span>def <span class="ident">visualize</span></span>(<span>structures)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Visualize set of structures</p>
+<p>Runs NGLView to visualize structures </p>
+<p>Parameters:
+structures (str or list of str): Location of PDB files to visualize</p>
+<p>Returns:
+NGLView Obj: Widget for Jupyter notebook visualization</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visualize(structures):
+    &#34;&#34;&#34;
+    Visualize set of structures
+
+    Runs NGLView to visualize structures 
+
+    Parameters:
+    structures (str or list of str): Location of PDB files to visualize
+
+    Returns:
+    NGLView Obj: Widget for Jupyter notebook visualization
+
+    &#34;&#34;&#34;
+
+    widget = nglview.NGLWidget()
+    widget.clear_representations()
+
+    if isinstance(structures, str):
+
+        s = md.load(structures)
+        widget.add_trajectory(s)
+
+    else:
+        for s in structures:
+            widget.add_trajectory(md.load(s))
+
+    return widget</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.visualize_ensemble"><code class="name flex">
+<span>def <span class="ident">visualize_ensemble</span></span>(<span>path_to_ensemble='./')</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Visualize ensemble produced by APE-Gen</p>
+<p>Runs NGLView to visualize the ensemble of conformations outputed by APE-Gen</p>
+<p>Parameters:
+path_to_ensemble (str): Location of PDB files of the ensemble</p>
+<p>Returns:
+NGLView Obj: Widget for Jupyter notebook visualization</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visualize_ensemble(path_to_ensemble=&#34;./&#34;):
+    &#34;&#34;&#34;
+    Visualize ensemble produced by APE-Gen
+
+    Runs NGLView to visualize the ensemble of conformations outputed by APE-Gen
+
+    Parameters:
+    path_to_ensemble (str): Location of PDB files of the ensemble
+
+    Returns:
+    NGLView Obj: Widget for Jupyter notebook visualization
+
+    &#34;&#34;&#34;
+
+    widget = nglview.NGLWidget()
+    widget.clear_representations()
+
+    ensemble = glob.glob(path_to_ensemble + &#34;0/full_system_confs/*.pdb&#34;)
+    
+    i = 0
+    for conf_str in ensemble:
+        struct = md.load(conf_str, atom_indices=md.load(conf_str).top.select(&#34;chainid == 2&#34;))
+        widget.add_trajectory(struct)
+        widget.add_licorice(component=i)
+        widget.remove_cartoon(component=i)
+        i = i + 1
+
+    return widget</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.visualize_separate"><code class="name flex">
+<span>def <span class="ident">visualize_separate</span></span>(<span>peptides, receptor=None, colors=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Visualize ligand and receptor separately</p>
+<p>Runs NGLView to visualize peptide conformations as well as the receptor (optional)</p>
+<p>Parameters:
+peptides (list of str): Location of PDB files of the peptides to visualize
+receptor (str): Location of the receptor to plot using surface mode
+colors (list of str): list of colors to use for the peptide conformations</p>
+<p>Returns:
+NGLView Obj: Widget for Jupyter notebook visualization</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def visualize_separate(peptides, receptor = None, colors = None):
+    &#34;&#34;&#34;
+    Visualize ligand and receptor separately
+
+    Runs NGLView to visualize peptide conformations as well as the receptor (optional)
+
+    Parameters:
+    peptides (list of str): Location of PDB files of the peptides to visualize
+    receptor (str): Location of the receptor to plot using surface mode
+    colors (list of str): list of colors to use for the peptide conformations
+
+    Returns:
+    NGLView Obj: Widget for Jupyter notebook visualization
+
+    &#34;&#34;&#34;
+    call([&#34;jupyter-nbextension enable --py --sys-prefix widgetsnbextension&#34;], shell=True)
+    call([&#34;jupyter-nbextension enable nglview --py --sys-prefix&#34;], shell=True)
+
+    import nglview
+    import glob
+    import mdtraj as md
+    from matplotlib.colors import to_hex
+    import matplotlib as mpl
+    from matplotlib.colors import to_hex
+    
+    widget = nglview.NGLWidget()
+    widget.clear_representations()
+
+    i = 0
+    for p in peptides:
+        struct = md.load(quote(p))
+        widget.add_trajectory(struct)
+        widget.add_licorice(component=i)
+        widget.remove_cartoon(component=i)
+        if colors:
+            widget.update_licorice(color=colors[i], component = i)
+        i = i + 1
+
+        
+    if receptor:
+        struct = md.load(receptor)
+        widget.add_trajectory(struct)
+        widget.add_surface(component=i)
+        widget.remove_cartoon(component=i)
+
+        
+    return widget</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul>
+<li><a href="#modeller-license-key">Modeller license key</a></li>
+<li><a href="#using-jupyter-notebook">Using Jupyter Notebook</a></li>
+<li><a href="#available-workflows">Available workflows</a></li>
+</ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="HLA_Arena.combine_flex_and_rigid_receptor" href="#HLA_Arena.combine_flex_and_rigid_receptor">combine_flex_and_rigid_receptor</a></code></li>
+<li><code><a title="HLA_Arena.dock" href="#HLA_Arena.dock">dock</a></code></li>
+<li><code><a title="HLA_Arena.dock_with_DINC" href="#HLA_Arena.dock_with_DINC">dock_with_DINC</a></code></li>
+<li><code><a title="HLA_Arena.download_pHLA_pdb" href="#HLA_Arena.download_pHLA_pdb">download_pHLA_pdb</a></code></li>
+<li><code><a title="HLA_Arena.filter_by_rmsd" href="#HLA_Arena.filter_by_rmsd">filter_by_rmsd</a></code></li>
+<li><code><a title="HLA_Arena.model_hla" href="#HLA_Arena.model_hla">model_hla</a></code></li>
+<li><code><a title="HLA_Arena.rescore" href="#HLA_Arena.rescore">rescore</a></code></li>
+<li><code><a title="HLA_Arena.rescore_complex" href="#HLA_Arena.rescore_complex">rescore_complex</a></code></li>
+<li><code><a title="HLA_Arena.rescore_complex_simple_smina" href="#HLA_Arena.rescore_complex_simple_smina">rescore_complex_simple_smina</a></code></li>
+<li><code><a title="HLA_Arena.set_dinc_params" href="#HLA_Arena.set_dinc_params">set_dinc_params</a></code></li>
+<li><code><a title="HLA_Arena.visualize" href="#HLA_Arena.visualize">visualize</a></code></li>
+<li><code><a title="HLA_Arena.visualize_ensemble" href="#HLA_Arena.visualize_ensemble">visualize_ensemble</a></code></li>
+<li><code><a title="HLA_Arena.visualize_separate" href="#HLA_Arena.visualize_separate">visualize_separate</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.5</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
