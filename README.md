@@ -1,4 +1,4 @@
-![Logo](hla-arena.png =250x)
+<img src="hla-arena.png" alt="logo" width="200"/>
 
 # HLA-Arena
 A customizable environment for the structural modeling and analysis of peptide-HLA complexes
