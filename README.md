@@ -1,4 +1,6 @@
-<img src="hla-arena.png" alt="logo" width="500"/>
+<p align="center">
+  <img width="500" src="hla-arena.png">
+</p>
 
 # HLA-Arena
 A customizable environment for the structural modeling and analysis of peptide-HLA complexes
