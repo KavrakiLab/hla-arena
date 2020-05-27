@@ -32,7 +32,7 @@ A customizable environment for the structural modeling and analysis of peptide-H
 the files with extension .ipynb). Note that all the data created in the container will be saved inside
 sub-directories of the current folder.
 
-8. Check out the file “DOCUMENTATION.html," provided alongside the Jupyter notebooks, for
+8. Check out the [DOCUMENTATION](https://kavrakilab.github.io/hla-arena/), also provided alongside the Jupyter notebooks, for
 additional information on the workflows and available functions. 
 
     Enjoy HLA-Arena!
