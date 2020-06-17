@@ -23,6 +23,18 @@
 <p>HLA-Arena: A Customizable environment for the structural modeling and analysis of peptide-HLA complexes for cancer immunotherapy</p>
 <h2 id="modeller-license-key">Modeller license key</h2>
 <p>Several of HLA-Arena workflows rely on Modeller to perform the homology modeling of a given HLA receptor. This modeling task is integrated into a specific HLA-Arena function (more details below). However, using Modeller requires you to register and obtain your own license key, if you do not already have one. First, follow instructions on the <a href="https://salilab.org/modeller/registration.html">Modeller registration page</a>. </p>
+<p>Once you have the key, you can permanently update the HLA-Arena container with your key. For that, you should execute the commands below, replacing <code>MODELLER_KEY</code> with the correct key. </p>
+<pre><code>docker run -it kavrakilab/hla-arena
+sed -i "s/XXXX/MODELLER_KEY/g" /conda/envs/apegen/lib/modeller-9.20/modlib/modeller/config.py
+exit
+docker commit $(docker ps -a | sed -n 2p | awk '{ print $1 }') kavrakilab/hla-arena
+docker container rm $(docker ps -a | sed -n 2p | awk '{ print $1 }')
+</code></pre>
+<p>Note that this modification is permanent, in the sense that will not be lost when you close the container. However, it will be required again when you update the container (e.g., docker pull kavrakilab/hla-arena).</p>
+<p>There is also the option of adding the key temporarily, when running a specific workflow. For that, just add the content below as one of the first cells to be executed in the workflow. Remember to replace <code>MODELLER_KEY</code> with the correct key.</p>
+<pre><code>from subprocess import call
+call(["sed -i "s/XXXX/" + MODELLER_KEY + "/g" /conda/envs/apegen/lib/modeller-9.20/modlib/modeller/config.py"], shell=True)
+</code></pre>
 <h2 id="using-jupyter-notebook">Using Jupyter Notebook</h2>
 <p>Each file with a '.ipynb' extension in this folder is a Jupyter notebook allowing you to run one of HLA-Arena workflows. Note that Jupyter Notebook is already installed in this docker image of HLA-Arena. If you are new to Jupyter Notebook, you can check this <a href="https://www.youtube.com/watch?v=HW29067qVWk&amp;feature=youtu.be&amp;t=274">tutorial on how to interact with its interface</a>. Numerous other resources are available online.</p>
 <h2 id="available-workflows">Available workflows</h2>
@@ -74,9 +86,22 @@ HLA-Arena: A Customizable environment for the structural modeling and analysis o
 
 ## Modeller license key
 
-(NOTICE: A MODELLER KEY IS TEMPORARILY PROVIDED FOR THE PURPOSE OF TESTING BY THE REVIEWER)
-
 Several of HLA-Arena workflows rely on Modeller to perform the homology modeling of a given HLA receptor. This modeling task is integrated into a specific HLA-Arena function (more details below). However, using Modeller requires you to register and obtain your own license key, if you do not already have one. First, follow instructions on the [Modeller registration page](https://salilab.org/modeller/registration.html). 
+
+Once you have the key, you can permanently update the HLA-Arena container with your key. For that, you should execute the commands below, replacing `MODELLER_KEY` with the correct key. 
+
+    docker run -it kavrakilab/hla-arena
+    sed -i &#34;s/XXXX/MODELLER_KEY/g&#34; /conda/envs/apegen/lib/modeller-9.20/modlib/modeller/config.py
+    exit
+    docker commit $(docker ps -a | sed -n 2p | awk &#39;{ print $1 }&#39;) kavrakilab/hla-arena
+    docker container rm $(docker ps -a | sed -n 2p | awk &#39;{ print $1 }&#39;)
+
+Note that this modification is permanent, in the sense that will not be lost when you close the container. However, it will be required again when you update the container (e.g., docker pull kavrakilab/hla-arena).
+
+There is also the option of adding the key temporarily, when running a specific workflow. For that, just add the content below as one of the first cells to be executed in the workflow. Remember to replace `MODELLER_KEY` with the correct key.
+
+    from subprocess import call
+    call([&#34;sed -i \&#34;s/XXXX/&#34; + MODELLER_KEY + &#34;/g\&#34; /conda/envs/apegen/lib/modeller-9.20/modlib/modeller/config.py&#34;], shell=True)
 
 
 ## Using Jupyter Notebook
