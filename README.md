@@ -18,6 +18,8 @@ A customizable environment for the structural modeling and analysis of peptide-H
 
 3. Create a folder in which you want to run the workflows (optional).
 
+        mkdir workflows; cd workflows
+
 4. Copy HLA-Arena notebooks and associated data to your local machine by typing:
 
         docker run --rm -v $(pwd):/temp --entrypoint cp kavrakilab/hla-arena /hla_arena_data/data.tar.gz \
