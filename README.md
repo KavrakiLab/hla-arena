@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="500" src="hla-arena.png">
+  <img width="450" src="hla-arena.png">
 </p>
 
 # HLA-Arena
