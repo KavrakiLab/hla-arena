@@ -22,7 +22,13 @@
 <section id="section-intro">
 <p>HLA-Arena: A Customizable environment for the structural modeling and analysis of peptide-HLA complexes for cancer immunotherapy</p>
 <h2 id="installation">Installation</h2>
-<p>HLA-Arena is made available through <a href="https://hub.docker.com/r/kavrakilab/hla-arena">Docker Hub</a>. Installation instructions are also provided in our <a href="https://github.com/KavrakiLab/hla-arena">github page</a>.</p>
+<p>HLA-Arena is made available through <a href="https://hub.docker.com/r/kavrakilab/hla-arena">Docker Hub</a>.<br>
+Installation instructions are also provided in our <a href="https://github.com/KavrakiLab/hla-arena">github page</a>.</p>
+<h2 id="video-tutorials">Video Tutorials</h2>
+<ul>
+<li><a href="https://youtu.be/gIFHmejEulo">HLA-Arena video tutorial part 1 (background)</a></li>
+<li><a href="https://youtu.be/fPhnmYez4QA">HLA-Arena video tutorial part 2 (demo)</a></li>
+</ul>
 <h2 id="modeller-license-key">Modeller license key</h2>
 <p>Several of HLA-Arena workflows rely on Modeller to perform the homology modeling of a given HLA receptor. This modeling task is integrated into a specific HLA-Arena function (more details below). However, using Modeller requires you to register and obtain your own license key, if you do not already have one. First, follow instructions on the <a href="https://salilab.org/modeller/registration.html">Modeller registration page</a>. </p>
 <p>Once you have the key, you can permanently update the HLA-Arena container with your key. For that, you should execute the commands below, replacing <code>MODELLER_KEY</code> with the correct key. </p>
@@ -82,13 +88,19 @@ You can click the "forward" button in the Jupyter Notebook toolbar to execute th
 #
 #  python 3
 #
-# Last update: July 16 2020
+# Last update: July 27 2020
 &#34;&#34;&#34;
 HLA-Arena: A Customizable environment for the structural modeling and analysis of peptide-HLA complexes for cancer immunotherapy
 
 ## Installation
 
-HLA-Arena is made available through [Docker Hub](https://hub.docker.com/r/kavrakilab/hla-arena). Installation instructions are also provided in our [github page](https://github.com/KavrakiLab/hla-arena).
+HLA-Arena is made available through [Docker Hub](https://hub.docker.com/r/kavrakilab/hla-arena).  
+Installation instructions are also provided in our [github page](https://github.com/KavrakiLab/hla-arena).
+
+## Video Tutorials
+
+* [HLA-Arena video tutorial part 1 (background)](https://youtu.be/gIFHmejEulo)
+* [HLA-Arena video tutorial part 2 (demo)](https://youtu.be/fPhnmYez4QA)
 
 ## Modeller license key
 
@@ -209,7 +221,7 @@ import matplotlib as mpl
 
 import pandas as pd
 import seaborn as sns
-from scipy import stats
+from scipy import stats, spatial
 import matplotlib.pyplot as plt
 import pickle
 
@@ -530,7 +542,51 @@ def rescore(ligands, receptor, func):
         dock_with_DINC(l, receptor, l+&#34;results&#34;, params=True)
         call([&#34;cat %sresults &gt;&gt; rescoreresults.txt&#34; % l], shell=True)
 
-        
+def filter_by_terminal_positions(filenames, receptor, cutoff_N=12, cutoff_C=12):
+        &#34;&#34;&#34;
+        Filter the conformations by the distance between the N terminus/C terminus
+        and specific residues of the alpha helices
+        This filters out conformations that are flipped in the binding site, 
+        filtering out conformations that are above either cutoff
+
+        filenames: (.pdb) of ligand conformations
+        receptor: (.pdb) file of receptor conformation
+        cutoff_N: distance cutoff between CA of res 63 of the receptor to
+                          the CA of N-terminus of the ligand
+        cutoff_C: distance cutoff between res 146 and C-term
+
+        return list of filenames that fit the criteria
+        &#34;&#34;&#34;
+
+        final_filenames = []
+
+        # load receptor atoms, residues are numbered starting at 0
+        N_ref_atom = md.load(receptor).top.select(&#34;resid 62 and name CA&#34;)
+        N_ref = md.load(receptor, atom_indices=N_ref_atom)
+
+        C_ref_atom = md.load(receptor).top.select(&#34;resid 145 and name CA&#34;)
+        C_ref = md.load(receptor, atom_indices=C_ref_atom)
+
+        # get length of peptide (load without H atoms)
+        peptide_length = md.load(filenames[0], atom_indices = md.load(filenames[0]).top.select(&#34;not name H&#34;)).top.n_residues
+        select_str = &#34;resid {} and name CA&#34;.format(peptide_length - 1)
+
+        for fname in filenames:
+                N_term = md.load(fname, atom_indices = md.load(fname).top.select(&#34;resid 0 and name CA&#34;))
+                C_term = md.load(fname, atom_indices = md.load(fname).top.select(select_str))
+
+                # distance calculations
+                delta_N = N_ref.xyz - N_term.xyz
+                delta_C = C_ref.xyz - C_term.xyz
+
+                rmsd_N = np.sqrt(sum(sum((delta_N * delta_N).T)))
+                rmsd_C = np.sqrt(sum(sum((delta_C * delta_C).T)))
+
+                if rmsd_N*10 &lt;= cutoff_N and rmsd_C*10 &lt;= cutoff_C:
+                        final_filenames.append(fname)
+
+        return final_filenames
+
 
 def filter_by_rmsd(filenames, reference, cutoff=4):
     &#34;&#34;&#34;
@@ -893,6 +949,70 @@ return list of filenames with rmsd &lt;= cutoff</p></section>
             final_filenames.append(fname)
 
     return final_filenames</code></pre>
+</details>
+</dd>
+<dt id="HLA_Arena.filter_by_terminal_positions"><code class="name flex">
+<span>def <span class="ident">filter_by_terminal_positions</span></span>(<span>filenames, receptor, cutoff_N=12, cutoff_C=12)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Filter the conformations by the distance between the N terminus/C terminus
+and specific residues of the alpha helices
+This filters out conformations that are flipped in the binding site,
+filtering out conformations that are above either cutoff</p>
+<p>filenames: (.pdb) of ligand conformations
+receptor: (.pdb) file of receptor conformation
+cutoff_N: distance cutoff between CA of res 63 of the receptor to
+the CA of N-terminus of the ligand
+cutoff_C: distance cutoff between res 146 and C-term</p>
+<p>return list of filenames that fit the criteria</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def filter_by_terminal_positions(filenames, receptor, cutoff_N=12, cutoff_C=12):
+        &#34;&#34;&#34;
+        Filter the conformations by the distance between the N terminus/C terminus
+        and specific residues of the alpha helices
+        This filters out conformations that are flipped in the binding site, 
+        filtering out conformations that are above either cutoff
+
+        filenames: (.pdb) of ligand conformations
+        receptor: (.pdb) file of receptor conformation
+        cutoff_N: distance cutoff between CA of res 63 of the receptor to
+                          the CA of N-terminus of the ligand
+        cutoff_C: distance cutoff between res 146 and C-term
+
+        return list of filenames that fit the criteria
+        &#34;&#34;&#34;
+
+        final_filenames = []
+
+        # load receptor atoms, residues are numbered starting at 0
+        N_ref_atom = md.load(receptor).top.select(&#34;resid 62 and name CA&#34;)
+        N_ref = md.load(receptor, atom_indices=N_ref_atom)
+
+        C_ref_atom = md.load(receptor).top.select(&#34;resid 145 and name CA&#34;)
+        C_ref = md.load(receptor, atom_indices=C_ref_atom)
+
+        # get length of peptide (load without H atoms)
+        peptide_length = md.load(filenames[0], atom_indices = md.load(filenames[0]).top.select(&#34;not name H&#34;)).top.n_residues
+        select_str = &#34;resid {} and name CA&#34;.format(peptide_length - 1)
+
+        for fname in filenames:
+                N_term = md.load(fname, atom_indices = md.load(fname).top.select(&#34;resid 0 and name CA&#34;))
+                C_term = md.load(fname, atom_indices = md.load(fname).top.select(select_str))
+
+                # distance calculations
+                delta_N = N_ref.xyz - N_term.xyz
+                delta_C = C_ref.xyz - C_term.xyz
+
+                rmsd_N = np.sqrt(sum(sum((delta_N * delta_N).T)))
+                rmsd_C = np.sqrt(sum(sum((delta_C * delta_C).T)))
+
+                if rmsd_N*10 &lt;= cutoff_N and rmsd_C*10 &lt;= cutoff_C:
+                        final_filenames.append(fname)
+
+        return final_filenames</code></pre>
 </details>
 </dd>
 <dt id="HLA_Arena.model_hla"><code class="name flex">
@@ -1315,6 +1435,7 @@ NGLView Obj: Widget for Jupyter notebook visualization</p></section>
 <div class="toc">
 <ul>
 <li><a href="#installation">Installation</a></li>
+<li><a href="#video-tutorials">Video Tutorials</a></li>
 <li><a href="#modeller-license-key">Modeller license key</a></li>
 <li><a href="#using-jupyter-notebook">Using Jupyter Notebook</a></li>
 <li><a href="#available-workflows">Available workflows</a></li>
@@ -1328,6 +1449,7 @@ NGLView Obj: Widget for Jupyter notebook visualization</p></section>
 <li><code><a title="HLA_Arena.dock_with_DINC" href="#HLA_Arena.dock_with_DINC">dock_with_DINC</a></code></li>
 <li><code><a title="HLA_Arena.download_pHLA_pdb" href="#HLA_Arena.download_pHLA_pdb">download_pHLA_pdb</a></code></li>
 <li><code><a title="HLA_Arena.filter_by_rmsd" href="#HLA_Arena.filter_by_rmsd">filter_by_rmsd</a></code></li>
+<li><code><a title="HLA_Arena.filter_by_terminal_positions" href="#HLA_Arena.filter_by_terminal_positions">filter_by_terminal_positions</a></code></li>
 <li><code><a title="HLA_Arena.model_hla" href="#HLA_Arena.model_hla">model_hla</a></code></li>
 <li><code><a title="HLA_Arena.rescore" href="#HLA_Arena.rescore">rescore</a></code></li>
 <li><code><a title="HLA_Arena.rescore_complex" href="#HLA_Arena.rescore_complex">rescore_complex</a></code></li>
